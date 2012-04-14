@@ -1,0 +1,37 @@
+%%-*- mode: erlang -*-
+%% Basic AT1 application skeleton
+
+%% Variables:
+%%   appid: name of the application to build
+%%          default = "wmskel"
+%%   prefix: path where the application should be created
+%%           default = "."
+{variables, [
+    {appid, "wmskel"},
+    {prefix, "."}
+]}.
+
+%% main project files
+{template, "README.markdown", "{{prefix}}/README.markdown"}.
+{template, "Makefile", "{{prefix}}/Makefile"}.
+{template, "rebar.config", "{{prefix}}/rebar.config"}.
+{file, "rebar", "{{prefix}}/rebar"}.
+{chmod, 8#744, "{{prefix}}/rebar"}.
+{template, "run_template.sh", "{{prefix}}/run.sh"}.
+{chmod, 8#744, "{{prefix}}/run.sh"}.
+
+{template, "apps/at1/src/at1.app.src", "{{prefix}}/apps/{{appid}}/src/{{appid}}.app.src"}.
+
+{template, "app.config.orig", "{{prefix}}/app.config.orig"}.
+
+%% source files
+{template, "apps/at1/src/at1.erl", "{{prefix}}/apps/{{appid}}/src/{{appid}}.erl"}.
+{template, "apps/at1/src/at1_log.hrl", "{{prefix}}/apps/{{appid}}/src/{{appid}}_log.hrl"}.
+{template, "apps/at1/src/at1_app.erl", "{{prefix}}/apps/{{appid}}/src/{{appid}}_app.erl"}.
+{template, "apps/at1/src/at1_sup.erl", "{{prefix}}/apps/{{appid}}/src/{{appid}}_sup.erl"}.
+
+% {template, "priv/dispatch.conf", "{{prefix}}/priv/dispatch.conf"}.
+% {dir, "{{prefix}}/priv/www"}.
+
+%% dependencies
+{dir, "{{prefix}}/deps"}.
