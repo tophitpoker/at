@@ -21,7 +21,7 @@ distclean: clean
 docs:
 	@./rebar skip_deps=true doc
 
-test: test-eunit test-ct
+test: test-eunit 
 
 test-eunit:
 	@./rebar eunit skip_deps=true
@@ -48,7 +48,7 @@ NODE_NAME={{appid}}@localhost
 COOKIE={{appid}}
 
 run: check-deps app.config
-	ERL_LIBS=deps:apps erl +MBas gf +MRas gf +Mim true -sname $(NODE_NAME) -setcookie $(COOKIE) -boot start_sasl -config app.config +P 2000000 -s hub
+	ERL_LIBS=deps:apps erl +MBas gf +MRas gf +Mim true -sname $(NODE_NAME) -setcookie $(COOKIE) -boot start_sasl -config app.config +P 2000000 -s {{appid}}
 
 attach:
 	erl -sname premsh@localhost -remsh $(NODE_NAME) -setcookie $(COOKIE)

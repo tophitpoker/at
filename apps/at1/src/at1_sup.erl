@@ -3,7 +3,7 @@
 %%% @end
 -module({{appid}}_sup).
 
--include ("{{appid}}_log.hrl").
+-include("{{appid}}_log.hrl").
 
 -behaviour(supervisor).
 
@@ -13,6 +13,8 @@
 %% Supervisor callbacks
 -export([init/1]).
 
+-define(APP, {{appid}}).
+
 %% API functions
 start_link() ->
     supervisor:start_link({local, ?MODULE}, ?MODULE, []).
@@ -21,11 +23,11 @@ start_link() ->
 init([]) ->
     ?DBG("Start supervisor", []),
 
-    IsPidEnable = appenv:get(enable_pid),
+    IsPidEnable = appenv:get(?APP, enable_pid),
     if
         IsPidEnable ->
             % Store BEAM process identificator in file
-            PidDir = appenv:get(pid_dir),
+            PidDir = appenv:get(?APP, pid_dir),
             PidName = atom_to_list(node()) ++ "." ++ "pid",
             FileName = filename:join([PidDir, PidName]),
             case file:open(FileName, [write]) of
