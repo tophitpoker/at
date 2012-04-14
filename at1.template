@@ -12,7 +12,7 @@
 ]}.
 
 %% main project files
-{template, "README.markdown", "{{prefix}}/README.markdown"}.
+{template, "README_T.markdown", "{{prefix}}/README.markdown"}.
 {template, "Makefile", "{{prefix}}/Makefile"}.
 {template, "rebar.config", "{{prefix}}/rebar.config"}.
 {file, "rebar", "{{prefix}}/rebar"}.
