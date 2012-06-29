@@ -2,6 +2,8 @@
 
 This is a tool that we use to create application skeletons.
 
+DO NOT COMPILE THIS PROJECT!!! (Because there is no need)
+
 ## Usage ##
 
 ```bash
